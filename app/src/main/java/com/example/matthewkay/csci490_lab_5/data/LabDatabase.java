@@ -12,5 +12,5 @@ import com.example.matthewkay.csci490_lab_5.entities.Person;
 @Database(entities = {Person.class}, version = 1)
 public abstract class LabDatabase extends RoomDatabase {
 
-    public abstract PersonDoa personDao();
+    public abstract PersonDao personDao();
 }

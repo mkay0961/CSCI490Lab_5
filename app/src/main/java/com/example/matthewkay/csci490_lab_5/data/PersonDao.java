@@ -11,7 +11,7 @@ import java.util.List;
  * Created by MatthewKay on 3/15/18.
  */
 
-public interface PersonDoa {
+public interface PersonDao {
     @Insert
     void insertPerson(Person person);
 
