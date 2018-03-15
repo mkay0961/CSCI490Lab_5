@@ -1,17 +1,19 @@
 package com.example.matthewkay.csci490_lab_5.entities;
 
+import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 /**
  * Created by MatthewKay on 3/15/18.
  */
-
+@Entity
 public class Person {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String name;
 
-
+    @NonNull
     public int getId() {
         return id;
     }
