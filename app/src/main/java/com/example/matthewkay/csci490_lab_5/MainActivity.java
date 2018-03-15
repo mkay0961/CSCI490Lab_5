@@ -1,5 +1,6 @@
 package com.example.matthewkay.csci490_lab_5;
 
+import android.arch.persistence.room.Room;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -39,6 +40,10 @@ public class MainActivity extends AppCompatActivity {
                         Toast.LENGTH_LONG).show();
             }
         });
+
+
+        labDB = Room.databaseBuilder(this, LabDatabase.class, DATABASE_NAME)
+                .build();
 
 
     }
