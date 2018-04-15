@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+    labDB = Room.databaseBuilder(this, LabDatabase.class, DATABASE_NAME).build();
 
 
 
@@ -49,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        labDB = Room.databaseBuilder(this, LabDatabase.class, "Persons").build();
 
 }
     private void submitToDatabase(String name)
