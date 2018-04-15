@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             Toast.makeText(getApplicationContext(),enter.getText().toString(), Toast.LENGTH_SHORT).show();
-            asyncTask task = new asyncTask(labDB);
-            task.execute(enter.getText().toString());
+            submitToDatabase(enter.getText().toString());
+            enter.setText("");
         }
     });
     list = findViewById(R.id.list);
@@ -44,8 +44,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             Toast.makeText(getApplicationContext(),"Listing names", Toast.LENGTH_SHORT).show();
-            asyncTask2 task = new asyncTask2(labDB,getApplicationContext());
-            task.execute();
+            retrieveName();
         }
 
         });
@@ -53,7 +52,17 @@ public class MainActivity extends AppCompatActivity {
         labDB = Room.databaseBuilder(this, LabDatabase.class, "Persons").build();
 
 }
+    private void submitToDatabase(String name)
+    {
+        asyncTask myAsyncTask = new asyncTask(labDB);
+        myAsyncTask.execute(name);
+    }
 
+    private void retrieveName()
+    {
+        asyncTask2 myAsyncTask2 = new asyncTask2(labDB, getApplicationContext());
+        myAsyncTask2.execute();
+    }
 
 
 
