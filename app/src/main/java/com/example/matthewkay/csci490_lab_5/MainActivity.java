@@ -24,10 +24,13 @@ public class MainActivity extends AppCompatActivity {
 
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    labDB = Room.databaseBuilder(this, LabDatabase.class, DATABASE_NAME)
-            .build();
+
+
+
     enter = findViewById(R.id.enterName);
-        submit = findViewById(R.id.submit);
+
+    submit = findViewById(R.id.submit);
+
         submit.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -47,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        labDB = Room.databaseBuilder(this, LabDatabase.class, "Persons").build();;
+        labDB = Room.databaseBuilder(this, LabDatabase.class, "Persons").build();
 
 }
 

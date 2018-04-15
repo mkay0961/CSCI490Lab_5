@@ -15,6 +15,8 @@ import java.util.ArrayList;
  */
 
 public class asyncTask2 extends AsyncTask<Void,Void,ArrayList<Person>> {
+
+
     LabDatabase personDB;
     Context context;
     public asyncTask2(LabDatabase personDB, Context context)
