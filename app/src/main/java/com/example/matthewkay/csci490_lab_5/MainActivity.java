@@ -31,32 +31,28 @@ public class MainActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Toast.makeText(MainActivity.this, "Submit Button Clicked" + enter.getText().toString(), Toast.LENGTH_LONG).show();
-            submitToDatabase(enter.getText().toString());
+            Toast.makeText(getApplicationContext(),enter.getText().toString(), Toast.LENGTH_SHORT).show();
+            asyncTask task = new asyncTask(labDB);
+            task.execute(enter.getText().toString());
         }
     });
     list = findViewById(R.id.list);
         list.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Toast.makeText(MainActivity.this, "List Button Clicked", Toast.LENGTH_LONG).show();
-            retrieveName();
+            Toast.makeText(getApplicationContext(),"Listing names", Toast.LENGTH_SHORT).show();
+            asyncTask2 task = new asyncTask2(labDB,getApplicationContext());
+            task.execute();
         }
-    });
+
+        });
+
+        labDB = Room.databaseBuilder(this, LabDatabase.class, "Persons").build();;
 
 }
 
-    private void submitToDatabase(String name)
-    {
-        asyncTask myAsyncTask = new asyncTask(labDB, getApplicationContext());
-        myAsyncTask.execute();
-    }
 
-    private void retrieveName()
-    {
-        asyncTask2 myAsyncTask2 = new asyncTask2(labDB, getApplicationContext());
-        myAsyncTask2.execute();
-    }
+
 
 
 }

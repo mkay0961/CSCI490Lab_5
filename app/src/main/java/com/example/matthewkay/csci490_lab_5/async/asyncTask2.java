@@ -15,32 +15,33 @@ import java.util.ArrayList;
  */
 
 public class asyncTask2 extends AsyncTask<Void,Void,ArrayList<Person>> {
-    private LabDatabase personDB;
+    LabDatabase personDB;
     Context context;
-
-    public asyncTask2(LabDatabase personDB, Context context){
+    public asyncTask2(LabDatabase personDB, Context context)
+    {
         this.personDB = personDB;
         this.context = context;
     }
 
     @Override
-    protected ArrayList<Person> doInBackground(Void... voids) {
-        ArrayList<Person> persons = (ArrayList) personDB.personDao().getAllPersons();
-        return persons;
-    }
-
-    @Override
-    protected void onPostExecute(ArrayList<Person> persons) {
+    protected void onPostExecute(ArrayList<Person> persons)
+    {
         super.onPostExecute(persons);
-        ArrayList<String> names = new ArrayList<>();
-        for(Person p: persons){
-            names.add(p.getName());
+        ArrayList<String> personNames = new ArrayList<>();
+        for(Person p: persons) {
+            personNames.add(p.getName());
         }
 
         Intent i = new Intent(context,PersonsActivity.class);
-        i.putExtra("Persons", names);
+        i.putExtra("Persons", personNames);
         context.startActivity(i);
+    }
 
+    @Override
+    protected ArrayList<Person> doInBackground(Void... voids)
+    {
+        ArrayList<Person> persons = (ArrayList) personDB.personDao().getAllPersons();
+        return persons;
     }
 
 }

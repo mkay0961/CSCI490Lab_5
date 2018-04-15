@@ -15,13 +15,13 @@ import java.util.List;
 public class PersonsActivity extends AppCompatActivity{
 
 
-    private ListView listView;
-
-    protected void onCreate(Bundle savedInstanceState) {
+    ListView listView;
+    @Override
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
         setContentView(R.layout.activity_persons);
+
         listView = findViewById(R.id.personName);
 
         ArrayList<String> i = (ArrayList) this.getIntent().getExtras().get("Persons");

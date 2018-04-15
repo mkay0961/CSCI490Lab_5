@@ -12,7 +12,7 @@ import com.example.matthewkay.csci490_lab_5.entities.Person;
 
 public class asyncTask extends AsyncTask<String, Void, Void> {
     LabDatabase database;
-    public asyncTask(LabDatabase database, Context applicationContext){
+    public asyncTask(LabDatabase database){
         this.database = database;
     }
 

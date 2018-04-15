@@ -13,7 +13,8 @@ import java.util.List;
  */
 
 @Dao
-public interface PersonDao {
+public interface PersonDao
+{
     @Insert
     void insertPerson(Person person);
 
