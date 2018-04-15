@@ -19,5 +19,4 @@ public interface PersonDao {
 
     @Query("SELECT * FROM Person")
     List<Person> getAllPersons();
-
 }

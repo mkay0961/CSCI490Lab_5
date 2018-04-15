@@ -9,11 +9,12 @@ import android.support.annotation.NonNull;
  */
 @Entity
 public class Person {
+
     @PrimaryKey(autoGenerate = true)
     private int id;
+
     private String name;
 
-    @NonNull
     public int getId() {
         return id;
     }

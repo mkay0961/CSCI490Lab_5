@@ -19,52 +19,43 @@ public class MainActivity extends AppCompatActivity {
     LabDatabase labDB;
     Button submit, list;
     EditText enter;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Log.i("h","j");
 
-        submit = (Button) findViewById(R.id.submit);
-        list = (Button) findViewById(R.id.list);
-        enter = (EditText) findViewById(R.id.enterName);
-
-
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    labDB = Room.databaseBuilder(this, LabDatabase.class, DATABASE_NAME)
+            .build();
+    enter = findViewById(R.id.enterName);
+        submit = findViewById(R.id.submit);
         submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "THis works" + enter.getText(),
-                        Toast.LENGTH_LONG).show();
-                submitToDatabase(enter.getText().toString());
-
-            }
-        });
-
+        @Override
+        public void onClick(View view) {
+            Toast.makeText(MainActivity.this, "Submit Button Clicked" + enter.getText().toString(), Toast.LENGTH_LONG).show();
+            submitToDatabase(enter.getText().toString());
+        }
+    });
+    list = findViewById(R.id.list);
         list.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "LISTTTTT",
-                        Toast.LENGTH_LONG).show();
-                retriveName();
-            }
-        });
+        @Override
+        public void onClick(View view) {
+            Toast.makeText(MainActivity.this, "List Button Clicked", Toast.LENGTH_LONG).show();
+            retrieveName();
+        }
+    });
 
+}
 
-        labDB = Room.databaseBuilder(this, LabDatabase.class, DATABASE_NAME)
-                .build();
-
-
+    private void submitToDatabase(String name)
+    {
+        asyncTask myAsyncTask = new asyncTask(labDB, getApplicationContext());
+        myAsyncTask.execute();
     }
 
-    private void submitToDatabase(String name){
-        asyncTask task = new asyncTask(labDB);
-        task.execute(name);
-    }
-    private void retriveName(){
-        asyncTask2 task2 = new asyncTask2(labDB, getApplicationContext());
-        task2.execute();
+    private void retrieveName()
+    {
+        asyncTask2 myAsyncTask2 = new asyncTask2(labDB, getApplicationContext());
+        myAsyncTask2.execute();
     }
 
 
